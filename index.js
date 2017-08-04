@@ -1,4 +1,4 @@
-var TIMEOUT_IN_SECS = 5
+var TIMEOUT_IN_SECS = 5 * 60
 var TEMPLATE = '<h1 style="color: #6da3bd"><span id="timer-minutes">00</span>:<span id="timer-seconds">00</span></h1>'
 var ALERT_INTERVAL = 1000 * 30 // 1000 ms * 30 = 30 sec
 var INSPIRATIONAL_PHRASES = [
