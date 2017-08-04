@@ -1,4 +1,4 @@
-var TIMEOUT_IN_SECS = 5 * 60
+var TIMEOUT_IN_SECS = 5
 var TEMPLATE = '<h1 style="color: #6da3bd"><span id="timer-minutes">00</span>:<span id="timer-seconds">00</span></h1>'
 var ALERT_INTERVAL = 1000 * 30 // 1000 ms * 30 = 30 sec
 var INSPIRATIONAL_PHRASES = [
@@ -39,15 +39,11 @@ var bodyTag = document.body
 bodyTag.insertBefore(timerContainer, bodyTag.firstChild)
 timerContainer.innerHTML = TEMPLATE
 
-function alerter(minutes, seconds) {
-    var minutes = document.getElementById('timer-minutes').innerHTML
-    var seconds = document.getElementById('timer-seconds').innerHTML
-    if ((minutes=='00') && (seconds=='00')){
+function alerter() {
         clearInterval(timerId)
         var inspiration = INSPIRATIONAL_PHRASES[Math.floor(Math.random()*INSPIRATIONAL_PHRASES.length)]
         window.alert(inspiration.phrase + "\n\n" + inspiration.signature)
         setTimeout(alerter, ALERT_INTERVAL)
-    }
 }
 
 function getTimestampInSecs(){
@@ -72,6 +68,11 @@ function displayTimer(){
   document.getElementById('timer-minutes').innerHTML = padZero(minutes)
   document.getElementById('timer-seconds').innerHTML = padZero(seconds)
 
-  alerter()
+  var minutes_left = parseInt(document.getElementById('timer-minutes').innerHTML)
+  var seconds_left = parseInt(document.getElementById('timer-seconds').innerHTML)
+
+  if ((minutes_left===00) && (seconds_left===00)) {
+        alerter()
+    }
 }
 var timerId = setInterval(displayTimer, 300)
