@@ -40,7 +40,6 @@ bodyTag.insertBefore(timerContainer, bodyTag.firstChild)
 timerContainer.innerHTML = TEMPLATE
 
 function alerter() {
-        clearInterval(timerId)
         var inspiration = INSPIRATIONAL_PHRASES[Math.floor(Math.random()*INSPIRATIONAL_PHRASES.length)]
         window.alert(inspiration.phrase + "\n\n" + inspiration.signature)
         setTimeout(alerter, ALERT_INTERVAL)
@@ -68,11 +67,11 @@ function displayTimer(){
   document.getElementById('timer-minutes').innerHTML = padZero(minutes)
   document.getElementById('timer-seconds').innerHTML = padZero(seconds)
 
-  var minutes_left = parseInt(document.getElementById('timer-minutes').innerHTML)
-  var seconds_left = parseInt(document.getElementById('timer-seconds').innerHTML)
-
-  if ((minutes_left===00) && (seconds_left===00)) {
-        alerter()
-    }
 }
+
 var timerId = setInterval(displayTimer, 300)
+
+setTimeout(function() {
+    clearInterval(timerId)
+    alerter()
+}, TIMEOUT_IN_SECS * 1000)
