@@ -39,10 +39,10 @@ var bodyTag = document.body
 bodyTag.insertBefore(timerContainer, bodyTag.firstChild)
 timerContainer.innerHTML = TEMPLATE
 
-function alerter() {
+function alertInspirationalPhrase() {
         var inspiration = INSPIRATIONAL_PHRASES[Math.floor(Math.random()*INSPIRATIONAL_PHRASES.length)]
         window.alert(inspiration.phrase + "\n\n" + inspiration.signature)
-        setTimeout(alerter, ALERT_INTERVAL)
+        setTimeout(alertInspirationalPhrase, ALERT_INTERVAL)
 }
 
 function getTimestampInSecs(){
@@ -73,5 +73,5 @@ var timerId = setInterval(displayTimer, 300)
 
 setTimeout(function() {
     clearInterval(timerId)
-    alerter()
+    alertInspirationalPhrase()
 }, TIMEOUT_IN_SECS * 1000)
